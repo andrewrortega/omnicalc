@@ -104,7 +104,14 @@ class CalculationsController < ApplicationController
 
     @range = @maximum - @minimum
     #
-    # @median = @numbers.median
+    middle=@count/2
+    if @count.even?
+      median = (@sorted_numbers[middle]+ @sorted_numbers[middle-1])/2
+    else
+      median = @sorted_numbers[middle]
+    end
+
+    @median = median
     #
     @sum = @numbers.sum
     #
@@ -114,7 +121,7 @@ class CalculationsController < ApplicationController
     #
     @standard_deviation = @variance**(0.5)
     #
-    # @mode = @numbers.mode
+    @mode = @numbers.group_by {|x| x}.group_by {|k,v| v.size}.sort.last.last.map(&:first)
 
     # ================================================================================
     # Your code goes above.
