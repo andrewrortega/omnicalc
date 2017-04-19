@@ -104,15 +104,15 @@ class CalculationsController < ApplicationController
 
     @range = @maximum - @minimum
     #
-    @median = @numbers.median
+    # @median = @numbers.median
     #
-    # @sum = @numbers.sum
+    @sum = @numbers.sum
     #
-    # @mean = @sum / @count
+    @mean = @sum / @count
     #
-    # @variance = @numbers.var
+    @variance = @numbers.map { |e| e - @mean }.map { |e| e**2  }.sum / @count
     #
-    # @standard_deviation = @numbers.standard_deviation
+    @standard_deviation = @variance**(0.5)
     #
     # @mode = @numbers.mode
 
